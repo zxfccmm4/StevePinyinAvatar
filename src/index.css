@@ -1,0 +1,326 @@
+:root {
+  /* Default Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #e8e8ed;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --border-color: #d2d2d7;
+  --accent-color: #0071e3;
+  --btn-text: #ffffff;
+  --btn-bg: #0071e3;
+  --card-bg: #ffffff;
+
+  --apple-radius: 12px;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #000000;
+  --bg-secondary: #1b1b1f;
+  /* Use this as main for immersive dark */
+  --bg-tertiary: #2c2c2e;
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
+  --border-color: #424245;
+  --accent-color: #2997ff;
+  --btn-text: #ffffff;
+  --btn-bg: #0071e3;
+  --card-bg: #1c1c1e;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Scrollbar minimal */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+button {
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Apple Intelligence Glow Effect */
+@keyframes ai-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.apple-ai-btn {
+  position: relative;
+  /* Rainbow Gradient for the "Border" */
+  background: linear-gradient(90deg, #32ade6, #af52de, #ff2d55, #ff9f0a, #32ade6) !important;
+  background-size: 300% 300% !important;
+  animation: ai-shimmer 3s linear infinite;
+  color: white !important;
+  border: none !important;
+  z-index: 1;
+  overflow: hidden;
+  /* Ensure padding compensates for the border width if using inset approach, 
+     but here we use a simple background layering or padding trick */
+  padding: 1px !important;
+  border-radius: 980px !important;
+  box-shadow: 0 0 15px rgba(50, 173, 230, 0.5);
+}
+
+/* The inner content background */
+.apple-ai-btn-inner {
+  background: var(--btn-bg);
+  width: 100%;
+  height: 100%;
+  border-radius: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  /* IMPORTANT */
+  padding: 0 28px;
+  /* Horizontal padding only, let height center it */
+}
+
+/* FutureLink Input Effect */
+/* ... siri-wave / breath-glow keyframes unchanged ... */
+
+.future-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 12px;
+  overflow: visible;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* ... pseudo elements ... */
+
+.future-input-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  /* Fill container */
+  /* padding will be handled by inline style or utility */
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: inherit;
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  /* IMPORTANT */
+}
+
+/* Search Bar / Command Bar Unified Style */
+.search-container {
+  position: relative;
+  /* Changed from fixed to relative for layout flow */
+  /* bottom: 0; left: 0; right: 0; padding: 1rem; removed for local usage */
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  margin-bottom: 80px;
+  margin-top: 20px;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  /* Restored max-width */
+  border-radius: 1.5rem;
+  /* 24px */
+  overflow: visible;
+  pointer-events: all;
+  z-index: 10;
+}
+
+.search-bar::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  z-index: 0;
+  opacity: 0;
+  background: linear-gradient(270deg,
+      #8a2be2,
+      #4169e1,
+      #00bfff,
+      #32cd32,
+      #ffd700,
+      #ff4500,
+      #8a2be2);
+  background-size: 600% 600%;
+  filter: blur(8px);
+  transition: opacity 0.4s ease-in-out;
+}
+
+.search-bar:focus-within::before {
+  opacity: 0.8;
+  animation: siri-wave 6s ease infinite, breath-glow 3s ease-in-out infinite;
+}
+
+.search-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: inherit;
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+}
+
+.search-bar-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.search-action-btn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.search-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hide number input spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.future-input-container::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  z-index: 0;
+  opacity: 0;
+  background: linear-gradient(270deg,
+      #8a2be2,
+      #4169e1,
+      #00bfff,
+      #32cd32,
+      #ffd700,
+      #ff4500,
+      #8a2be2);
+  background-size: 600% 600%;
+  filter: blur(8px);
+  transition: opacity 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.future-input-container:focus-within::before {
+  opacity: 0.8;
+  animation: siri-wave 6s ease infinite, breath-glow 3s ease-in-out infinite;
+}
+
+.future-input-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 2px;
+  /* Slight padding for border */
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: inherit;
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s;
+}
+
+/* Hide default border of inner input */
+.future-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 4px;
+}
