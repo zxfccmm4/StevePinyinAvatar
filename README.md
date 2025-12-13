@@ -1,8 +1,10 @@
 # StevePinyin Avatar Studio
 
-一个拥有极致 UI 体验的头像批量生成器。融合了 **Apple Intelligence** 的流光美学与 **FutureLink** 的未来感交互。
+一个拥有极致 UI 体验的头像批量生成器。融合了 **Apple Intelligence** 的流光美学未来感交互。
 
-![UI Preview](https://github.com/user-attachments/assets/placeholder)
+
+![UI Preview](public/preview/landing-dark.png)
+
 
 > **Unlock your visual identity.**  
 > 为你的数字生态批量生成一致性头像，支持从本地到云端的无缝同步。
@@ -96,6 +98,27 @@ npm run dev
 
 - 确保本地终端具有访问 GitHub 的权限 (建议配置 SSH Key)。
 - 后端服务运行在本地，用于处理文件系统和 Git 操作，请勿在无保护的公网环境暴露端口。
+
+
+---
+
+## 🖼️ 界面预览 (Preview)
+
+### 沉浸式暗黑模式
+![Dark Mode Landing](public/preview/landing-dark.png)
+
+### 批量生成网格
+![Avatar Grid](public/preview/grid-dark.png)
+
+---
+
+## ❤️ 致谢 (Credits)
+
+本项目核心的头像生成能力由以下开源项目驱动：
+
+- **[react-nice-avatar](https://github.com/dapi-labs/react-nice-avatar)**: By **dapi-labs**. 提供了极其丰富且可爱的头像 SVG 组件库。
+
+没有他们的精彩工作，就没有 StevePinyin Avatar Studio 的诞生。
 
 ---
 
